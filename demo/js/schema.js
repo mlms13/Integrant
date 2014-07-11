@@ -1,8 +1,8 @@
 module.exports = {
-    name: String,
-    duration: String,
-    trackNumber: Number,
-    releaseDate: Date
+    name: "string",
+    duration: "string",
+    trackNumber: "number",
+    releaseDate: "date"
 };
 
 

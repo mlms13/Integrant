@@ -20,6 +20,7 @@ gulp.task('js', ['clean:js'], function () {
     var browserify = require('browserify');
 
     return browserify('./demo/js/index.js')
+        .transform('hbsfy')
         .bundle()
         .pipe(source('bundle.js'))
         .pipe(gulp.dest('./dist/'));
