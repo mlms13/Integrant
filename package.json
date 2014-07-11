@@ -1,0 +1,31 @@
+{
+  "name": "Integrant",
+  "version": "0.0.0",
+  "description": "Quickly generate forms based on a JSON schema",
+  "main": "src/integrant.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mlms13/Integrant.git"
+  },
+  "keywords": [
+    "integrant",
+    "form"
+  ],
+  "author": "Michael Martin-Smucker",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mlms13/Integrant/issues"
+  },
+  "homepage": "https://github.com/mlms13/Integrant",
+  "devDependencies": {
+    "browserify": "^4.2.0",
+    "gulp": "^3.8.6",
+    "gulp-clean": "^0.3.1",
+    "gulp-jshint": "^1.7.1",
+    "jshint-stylish": "^0.4.0",
+    "vinyl-source-stream": "^0.1.1"
+  }
+}
