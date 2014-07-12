@@ -1,6 +1,10 @@
 module.exports = {
     Name: "string",
-    Duration: "string",
+    duration: {
+        label: "Duration",
+        type: "string",
+        placeholder: "e.g. 4m 32s"
+    },
     trackNumber: {
         label: "Track Number",
         type: "number"

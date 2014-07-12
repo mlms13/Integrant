@@ -25,7 +25,7 @@ gulp.task('js', ['clean:js'], function () {
     var browserify = require('browserify');
 
     return browserify('./demo/js/index.js')
-        .transform('hbsfy')
+        .transform('jadeify')
         .bundle()
         .pipe(source('bundle.js'))
         .pipe(gulp.dest('./dist/'));
@@ -48,7 +48,7 @@ gulp.task('build', ['hint', 'js', 'stylus', 'copy']);
 
 gulp.task('watch', ['build'], function () {
     gulp.watch(['./src/**/*.js', './demo/**/*.js', './Gulpfile.js'], ['hint']);
-    gulp.watch(['./src/**/*.js', './src/**/*.hbs', './demo/**/*.js'], ['js']);
+    gulp.watch(['./src/**/*.js', './src/**/*.jade', './demo/**/*.js'], ['js']);
     gulp.watch(['./demo/**/*.styl'], ['stylus']);
     gulp.watch('./demo/*.html', ['copy']);
 });

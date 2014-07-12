@@ -1,4 +1,4 @@
 
 module.exports = {
-    template: require('./template.hbs')
+    template: require('./number.jade')
 };
