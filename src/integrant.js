@@ -23,7 +23,7 @@ integrant.generate = function (schema) {
 
     Object.keys(schema).forEach(function (key) {
         if (!types[schema[key]]) throw new Error('Cannot generate HTML for unknown type ' + schema[key]);
-        output += '<div>' + types[schema[key]].template({label: key}) + '</div>';
+        output += '<div class="intgrnt-field">' + types[schema[key]].template({label: key}) + '</div>';
     });
 
     return output;
