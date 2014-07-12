@@ -24,8 +24,16 @@ Integrant.generate = function (schema) {
     var output = '';
 
     _.forIn(schema, function (value, key) {
-        if (!types[value]) throw new Error('Cannot generate HTML for unknown type ' + value);
-        output += '<div class="intgrnt-field">' + types[value].template({label: key}) + '</div>';
+        // if the value uses the shorthand notation, convert it to a full object
+        if (typeof value !== 'object') {
+            value = {label: key, type: value};
+        }
+
+        // if an unknown type is requested, complain about it
+        if (!types[value.type]) throw new Error('Cannot generate HTML for unknown type ' + value.type);
+
+        // otherwise, compile the appropriate template
+        output += '<div class="intgrnt-field">' + types[value.type].template(value) + '</div>';
     });
 
     return output;
