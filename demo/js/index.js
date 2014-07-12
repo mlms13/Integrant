@@ -7,13 +7,17 @@ var $form = $('<form />')
     .append('<button>Submit</button>');
 
 // set up validation
-$form.find('[type=number]').on('keyup', function () {
-    var $this = $(this),
+$form
+    .find('[type=number]').on('keyup', function (e) {
         // TODO: test the non-input.validity method in old IE
-        valid = $this[0].validity ? $this[0].validity.valid : Integrant.validate('number', $this.val());
+        var valid = e.target.validity ? e.target.validity.valid : Integrant.validate('number', $this.val());
 
-    // conditionally add or remove the `invalid` class
-    $this[valid ? 'removeClass' : 'addClass']('invalid');
-});
+        // conditionally add or remove the `invalid` class
+        $(e.target)[valid ? 'removeClass' : 'addClass']('invalid');
+    })
+    .find('[type=date]').on('keyup', function (e) {
+        var valid = e.target.validity ? e.target.validity.valid : Integrant.validate('date', $this.val());
+        $(e.target)[valid ? 'removeClass' : 'addClass']('invalid');
+    });
 
 $('body').append($form);
