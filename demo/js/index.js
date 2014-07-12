@@ -1,7 +1,7 @@
-var integrant = require('../../src/integrant'),
+var Integrant = require('../../src/integrant'),
     schema    = require('./schema');
 
 var form = document.createElement('form');
 
-form.innerHTML = integrant.generate(schema);
+form.innerHTML = Integrant.generate(schema);
 document.body.appendChild(form);

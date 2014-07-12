@@ -1,11 +1,11 @@
 // treat this object as a collection of public static methods
 // we will expose this entire object to clients of this library
-var integrant = {};
+var Integrant = {};
 
 // everything that isn't attached to integrant is private
 var types = {};
 
-integrant.registerType = function (name, definition) {
+Integrant.registerType = function (name, definition) {
     // ignore case for type names
     name = name.toLowerCase();
 
@@ -16,7 +16,7 @@ integrant.registerType = function (name, definition) {
     types[name] = definition;
 };
 
-integrant.generate = function (schema) {
+Integrant.generate = function (schema) {
     if (!schema || typeof schema !== "object" || schema instanceof Array) throw new Error("Schema must be an object");
 
     var output = '';
@@ -30,8 +30,8 @@ integrant.generate = function (schema) {
 };
 
 // register default types
-integrant.registerType('string', require('./types/string'));
-integrant.registerType('number', require('./types/number'));
-integrant.registerType('date', require('./types/date'));
+Integrant.registerType('string', require('./types/string'));
+Integrant.registerType('number', require('./types/number'));
+Integrant.registerType('date', require('./types/date'));
 
-module.exports = integrant;
+module.exports = Integrant;
