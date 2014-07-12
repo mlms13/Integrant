@@ -1,7 +1,9 @@
 var Integrant = require('../../src/integrant'),
-    schema    = require('./schema');
+    schema    = require('./schema'),
+    $         = require('jquery');
 
-var form = document.createElement('form');
+var $form = $('<form />')
+    .html(Integrant.generate(schema))
+    .append('<button>Submit</button>');
 
-form.innerHTML = Integrant.generate(schema);
-document.body.appendChild(form);
+$('body').append($form);
