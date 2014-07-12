@@ -1,3 +1,5 @@
+var _ = require('lodash');
+
 // treat this object as a collection of public static methods
 // we will expose this entire object to clients of this library
 var Integrant = {};
@@ -21,9 +23,9 @@ Integrant.generate = function (schema) {
 
     var output = '';
 
-    Object.keys(schema).forEach(function (key) {
-        if (!types[schema[key]]) throw new Error('Cannot generate HTML for unknown type ' + schema[key]);
-        output += '<div class="intgrnt-field">' + types[schema[key]].template({label: key}) + '</div>';
+    _.forIn(schema, function (value, key) {
+        if (!types[value]) throw new Error('Cannot generate HTML for unknown type ' + value);
+        output += '<div class="intgrnt-field">' + types[value].template({label: key}) + '</div>';
     });
 
     return output;
