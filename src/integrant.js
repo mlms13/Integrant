@@ -18,6 +18,15 @@ Integrant.registerType = function (name, definition) {
     types[name] = definition;
 };
 
+Integrant.validate = function (type, value) {
+    // throw an error if an invalid type was given
+    if (!types[type]) throw new Error('Cannot validate unknown type ' + type);
+
+    // if no validation function is defined for this type, assume input value is OK
+    // otherwise, return the result of calling the validate function
+    return types[type].validate ? types[type].validate(value) : true;
+};
+
 Integrant.generate = function (schema) {
     if (!schema || typeof schema !== "object" || schema instanceof Array) throw new Error("Schema must be an object");
 
