@@ -32,6 +32,9 @@ Integrant.generate = function (schema) {
         // if an unknown type is requested, complain about it
         if (!types[value.type]) throw new Error('Cannot generate HTML for unknown type ' + value.type);
 
+        // add an ID parameter to each object
+        value = _.assign({id: 'field-' + Math.random().toString(36).substr(2, 5)}, value);
+
         // otherwise, compile the appropriate template
         output += '<div class="intgrnt-field">' + types[value.type].template(value) + '</div>';
     });
